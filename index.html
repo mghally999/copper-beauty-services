@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Copper Beauty — Services & Prices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ================= BRAND + THEME ================= */
+        :root {
+            --c1: #d46c51;
+            /* copper base */
+            --c2: #d86f52;
+            /* copper light */
+            --c3: #b35942;
+            /* copper dark */
+            --w: #ffffff;
+            /* white */
+            --k: #000000;
+            /* absolute blackness */
+            --ink: #ffffff;
+            /* white text on black */
+            --panel: #000000;
+            /* absolute black panels */
+            --chip-bg: #000000;
+            --chip-bd: rgba(212, 108, 81, .6);
+            --card-bd: rgba(212, 108, 81, .4);
+            --row-bd: rgba(212, 108, 81, .45);
+            --row-dot: rgba(212, 108, 81, .55);
+            --shadow: rgba(0, 0, 0, .8);
+            --glow: rgba(212, 108, 81, .3);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            background-color: var(--k);
+            color: var(--ink);
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Cosmic copper background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(212, 108, 81, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 85% 10%, rgba(216, 111, 82, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 90%, rgba(179, 89, 66, 0.1) 0%, transparent 25%),
+                linear-gradient(0deg, #000000 0%, #000000 100%);
+            z-index: -1;
+        }
+
+        /* Subtle animated particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(1px 1px at 20% 30%, rgba(212, 108, 81, 0.6), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(212, 108, 81, 0.4), transparent),
+                radial-gradient(1.5px 1.5px at 60% 20%, rgba(216, 111, 82, 0.5), transparent),
+                radial-gradient(1px 1px at 80% 50%, rgba(212, 108, 81, 0.7), transparent),
+                radial-gradient(1px 1px at 30% 80%, rgba(216, 111, 82, 0.4), transparent),
+                radial-gradient(1.5px 1.5px at 70% 10%, rgba(212, 108, 81, 0.6), transparent);
+            background-repeat: no-repeat;
+            z-index: -1;
+            animation: sparkle 20s linear infinite;
+        }
+
+        @keyframes sparkle {
+            from {
+                transform: translateY(0px);
+            }
+
+            to {
+                transform: translateY(-100px);
+            }
+        }
+
+        /* ================= WRAPPER ================= */
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 18px 16px 96px
+        }
+
+        /* ================= HEADER BAR ================= */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: linear-gradient(90deg, var(--c3), var(--c1));
+            color: var(--w);
+            border-bottom: 2px solid rgba(255, 255, 255, .2);
+            box-shadow: 0 4px 20px var(--glow);
+        }
+
+        .header-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo {
+            display: inline-grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: conic-gradient(from 200deg, var(--c2), var(--c1), var(--c2));
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .1) inset,
+                0 0 15px var(--c1),
+                0 0 30px rgba(212, 108, 81, .4);
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, .1) inset, 0 0 15px var(--c1), 0 0 30px rgba(212, 108, 81, .4);
+            }
+
+            100% {
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, .1) inset, 0 0 20px var(--c2), 0 0 40px rgba(212, 108, 81, .6);
+            }
+        }
+
+        .logo svg {
+            width: 28px;
+            height: 28px;
+            display: block
+        }
+
+        .brand {
+            margin: 0;
+            font: 700 20px/1 "Playfair Display", serif;
+            letter-spacing: .06em;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            text-shadow: 0 0 10px rgba(212, 108, 81, .5);
+        }
+
+        .brand .lighter {
+            font-weight: 600;
+            opacity: .92;
+            font-size: 18px;
+            letter-spacing: .18em;
+            text-transform: uppercase
+        }
+
+        .spacer {
+            flex: 1
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .btn {
+            appearance: none;
+            border: 1px solid rgba(255, 255, 255, .3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .btn:hover {
+            background: rgba(212, 108, 81, .3);
+            box-shadow: 0 0 10px rgba(212, 108, 81, .5);
+        }
+
+        /* ================= CHIPS ================= */
+        .chips {
+            position: sticky;
+            top: 60px;
+            z-index: 25;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--panel);
+            border-bottom: 1px solid var(--card-bd);
+            backdrop-filter: blur(5px);
+        }
+
+        .chip {
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-weight: 700;
+            font-size: 12px;
+            background: var(--chip-bg);
+            border: 1.5px solid var(--chip-bd);
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .chip:hover,
+        .chip[aria-current="true"] {
+            border-color: transparent;
+            color: var(--w);
+            background: linear-gradient(90deg, var(--c1), var(--c2));
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px var(--glow);
+        }
+
+        /* ================= SECTION CARD ================= */
+        section {
+            margin: 16px 0;
+            border: 1.5px solid var(--card-bd);
+            background: var(--panel);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px var(--shadow);
+            opacity: 0;
+            transform: translateY(20px) scale(.98);
+            transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease;
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--c1), transparent);
+            opacity: 0.7;
+        }
+
+        section.in {
+            opacity: 1;
+            transform: translateY(0) scale(1)
+        }
+
+        .sec-head {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(212, 108, 81, .15), rgba(216, 111, 82, .08));
+            position: relative;
+        }
+
+        .sec-head::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--c1), transparent);
+            opacity: 0.5;
+        }
+
+        h2 {
+            margin: 0;
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: clamp(20px, 2.6vw, 28px);
+            letter-spacing: .02em;
+            color: var(--ink);
+            text-shadow: 0 0 8px rgba(212, 108, 81, .4);
+        }
+
+        .note {
+            margin-left: auto;
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            opacity: .7
+        }
+
+        /* ================= GRID ================= */
+        .grid {
+            display: grid;
+            gap: 10px;
+            padding: 12px 12px 18px
+        }
+
+        @media(min-width:640px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: space-between;
+            padding: 14px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, rgba(212, 108, 81, .08), rgba(216, 111, 82, .06) 50%, transparent 50%);
+            border: 1px dashed var(--row-bd);
+            position: relative;
+            overflow: hidden;
+            transition: transform .25s ease, background .3s ease, border-color .25s ease;
+        }
+
+        .row:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(212, 108, 81, .2) 45%, transparent 55%);
+            transform: translateX(-120%);
+            transition: transform .8s cubic-bezier(.2, .6, .2, 1);
+        }
+
+        .row:hover {
+            transform: translateY(-2px);
+            border-style: solid;
+            border-color: var(--c1);
+            box-shadow: 0 5px 15px var(--glow);
+        }
+
+        .row:hover:before {
+            transform: translateX(120%);
+        }
+
+        .name {
+            font-weight: 700;
+            position: relative;
+        }
+
+        .dots {
+            flex: 1;
+            height: 1px;
+            border-bottom: 1px dotted var(--row-dot);
+            margin: 0 12px;
+            transform: translateY(2px);
+        }
+
+        .price {
+            font-weight: 800;
+            letter-spacing: .02em;
+            background: linear-gradient(90deg, var(--c2), var(--c1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(212, 108, 81, .3);
+        }
+
+        /* ================= FLOAT ACTIONS ================= */
+        .fab {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .fab .action {
+            border: none;
+            border-radius: 999px;
+            padding: 12px 14px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--c1), var(--c2));
+            color: #fff;
+            box-shadow: 0 5px 20px var(--glow);
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .fab .action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--glow);
+        }
+
+        .fab .action:active {
+            transform: translateY(1px)
+        }
+
+        /* ================= PRINT ================= */
+        @media print {
+
+            .header,
+            .chips,
+            .fab {
+                display: none
+            }
+
+            .wrap {
+                padding: 0
+            }
+
+            section {
+                break-inside: avoid;
+                box-shadow: none;
+                margin: 10px 0
+            }
+
+            .row {
+                border-color: #000
+            }
+        }
+
+        /* Accessibility: reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            section {
+                transition: none
+            }
+
+            .row:before {
+                display: none
+            }
+
+            body::after {
+                animation: none;
+            }
+
+            .logo {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-inner">
+            <span class="logo" aria-hidden="true">
+                <!-- Minimal inline logo (monogram 'c') -->
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M17.5 6.8c-1.3-1.2-3-1.9-5-1.9-4.2 0-7.5 3.2-7.5 7.1 0 4 3.3 7.1 7.5 7.1 2 0 3.7-.7 5-1.9"
+                        stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </span>
+            <h1 class="brand">Copper Beauty</h1>
+            <div class="spacer"></div>
+            <div class="controls">
+                <button class="btn" id="printBtn">Print</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chips -->
+    <nav class="chips" id="chips"></nav>
+
+    <!-- Content -->
+    <div class="wrap">
+        <main id="content"></main>
+    </div>
+
+    <!-- Floating actions -->
+    <div class="fab">
+        <button class="action" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top</button>
+        <button class="action" onclick="window.print()">Print</button>
+    </div>
+
+    <script>
+        // ====== DATA ======
+        const DATA = [
+            {
+                id: "nails-basic", title: "Basic Nails", items: [
+                    ["Manicure", "80"], ["Pedicure", "90"], ["Classic Manicure", "90"], ["Classic Pedicure", "100"],
+                    ["Shape & Polish", "45"], ["Shellac/Gelish Manicure", "150"], ["Shellac/Gelish Pedicure", "70"],
+                    ["Nail Art (per nail)", "10"], ["Chrome Nails", "10"], ["Gelish Removal", "40"],
+                    ["Gelish Application", "100"], ["+Deep Cleaning", "50"], ["+Ingrown Removal", "30-50"]
+                ]
+            },
+            {
+                id: "nail-enhancement", title: "Nail Enhancement", items: [
+                    ["Gel Extension", "350"], ["Acrylic Extension", "350"], ["Refill", "250"], ["+Gel Polish", "50"]
+                ]
+            },
+            {
+                id: "nail-treatments", title: "Treatments (Nails)", items: [
+                    ["Callous Treatment", "60"], ["Foot Scrub", "50"]
+                ]
+            },
+            {
+                id: "hair", title: "Hair", items: [
+                    ["Fringe Cut", "80-120"], ["Hair cut", "200-350"], ["Hair trim", "150-250"],
+                    ["Blow dry", "130-250"], ["Blow dry plus extensions", "180-350"], ["Styling", "350-550"],
+                    ["Bridal", "Upon consultation"]
+                ]
+            },
+            {
+                id: "hair-extensions", title: "Hair Extensions", items: [
+                    ["Tape extension per 10 pairs", "1100-1500"], ["Removal per 10 pairs", "70"],
+                    ["Fixing Tape per 10 pairs", "70"], ["Attaching per 10 pairs", "80-120"],
+                    ["Keratin Extensions", "Upon consultation"], ["Clip Extensions", "Upon consultation"]
+                ]
+            },
+            {
+                id: "hair-colour", title: "Hair Colour", items: [
+                    ["Full Colour", "400-750"], ["Full Colour (Ammonia free)", "450-800"],
+                    ["Roots Colour", "300-400"], ["Roots Colour (Ammonia free)", "350-450"],
+                    ["Toner/Gloss", "250-350"], ["Full Highlights/Balayage/Ombre", "1000-2500"],
+                    ["Half Highlights/Balayage/Ombre", "750-1000"], ["Bleaching", "700-1500"]
+                ]
+            },
+            {
+                id: "hair-treatments", title: "Treatments (Hair)", items: [
+                    ["Botox Straightening Treatment", "1000-3000"], ["BB Cream Straightening", "1000-3500"],
+                    ["Treatment After Treatment Mask", "150-250"], ["Caviar Treatment", "250-500"],
+                    ["Moremo Treatment", "250-500"], ["Scalp Spa Treatment", "250-500"]
+                ]
+            },
+            {
+                id: "waxing", title: "Waxing", items: [
+                    ["Full Face Waxing", "100"], ["Bikini Line Waxing", "80"], ["Full Bikini Waxing", "140"],
+                    ["Full Leg Waxing", "130"], ["Half Leg Waxing", "80"], ["Full Arm Waxing", "100"],
+                    ["Half Arm Waxing", "60"], ["Underarm Waxing", "50"], ["Fingers & Toes Waxing", "30"]
+                ]
+            },
+            {
+                id: "threading", title: "Threading", items: [
+                    ["Brow Shaping", "50-70"], ["Upper Lip Threading", "30-50"], ["Chin", "30"],
+                    ["Side burns", "30"], ["Full face threading", "100"]
+                ]
+            },
+            {
+                id: "makeup", title: "Make-Up", items: [
+                    ["Eye Makeup", "350"], ["Full Makeup", "500"], ["Makeup with eyelash", "600"], ["Lash application", "150-250"]
+                ]
+            },
+            {
+                id: "massage", title: "Massage", items: [
+                    ["Head/Neck & Shoulder/Foot · 15 mins", "60"], ["Head/Neck & Shoulder/Foot · 30 mins", "110"]
+                ]
+            },
+        ];
+
+        // ====== RENDER ======
+        const content = document.getElementById('content');
+        const chips = document.getElementById('chips');
+        DATA.forEach((sec, idx) => {
+            // Chip
+            const cp = document.createElement('a'); cp.className = 'chip'; cp.href = '#' + sec.id; cp.textContent = sec.title.replace(/ \\(.+\\)/, '');
+            chips.appendChild(cp);
+            // Section
+            const S = document.createElement('section'); S.id = sec.id;
+            S.innerHTML = `<div class="sec-head"><h2>${sec.title}</h2><span class="note">Prices in AED</span></div>
+               <div class="grid">${sec.items.map(([n, p]) => `<div class="row"><span class="name">${n}</span><span class="dots"></span><span class="price">${p}</span></div>`).join('')}</div>`;
+            content.appendChild(S);
+        });
+
+        // ====== OBSERVE for reveal ======
+        const reveal = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); } });
+        }, { threshold: .1 });
+        document.querySelectorAll('main section').forEach(s => reveal.observe(s));
+
+        // ====== Controls ======
+        document.getElementById('printBtn').addEventListener('click', () => window.print());
+    </script>
+</body>
+
+</html>
